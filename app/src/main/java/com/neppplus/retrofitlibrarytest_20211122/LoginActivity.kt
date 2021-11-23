@@ -118,6 +118,8 @@ class LoginActivity : BaseActivity() {
 
                         Log.d("내정보요청",  jsonObj.toString())
 
+//                        우리 앱 서버 (api.gudoc.in) 에 소셜로그인 성공 요청 호출.
+
                     }
 
 
