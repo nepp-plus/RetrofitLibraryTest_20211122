@@ -1,27 +1,24 @@
 package com.neppplus.retrofitlibrarytest_20211122
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import com.neppplus.retrofitlibrarytest_20211122.api.ServerAPI
-import com.neppplus.retrofitlibrarytest_20211122.api.ServerAPIService
-import com.neppplus.retrofitlibrarytest_20211122.databinding.ActivityMainBinding
+import com.neppplus.retrofitlibrarytest_20211122.databinding.ActivityLoginBinding
 import com.neppplus.retrofitlibrarytest_20211122.datas.BasicResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : BaseActivity() {
+class LoginActivity : BaseActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         setupEvents()
         setValues()
     }
