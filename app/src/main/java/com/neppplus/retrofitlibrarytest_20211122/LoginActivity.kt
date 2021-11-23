@@ -19,6 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.security.MessageDigest
+import java.util.*
 
 class LoginActivity : BaseActivity() {
 
@@ -35,6 +36,12 @@ class LoginActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        binding.btnFacebookLogin.setOnClickListener {
+
+//            실제 페북로그인 실행
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"))
+
+        }
 
 
         binding.btnSignUp.setOnClickListener {
