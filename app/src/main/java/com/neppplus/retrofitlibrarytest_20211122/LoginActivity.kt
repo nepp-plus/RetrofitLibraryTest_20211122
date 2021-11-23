@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.kakao.sdk.user.UserApi
+import com.kakao.sdk.user.UserApiClient
 import com.neppplus.retrofitlibrarytest_20211122.databinding.ActivityLoginBinding
 import com.neppplus.retrofitlibrarytest_20211122.datas.BasicResponse
 import org.json.JSONObject
@@ -33,6 +35,48 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        binding.btnKakaoLogin.setOnClickListener {
+
+            if ( UserApiClient.instance.isKakaoTalkLoginAvailable(mContext) ) {
+
+//                카톡 앱이 깔려있는 상황
+                UserApiClient.instance.loginWithKakaoTalk(mContext) { token, error ->
+
+                    if (error != null) {
+                        Log.e("카톡로그인", "로그인 실패")
+                    }
+                    else if (token != null) {
+
+                        Log.e("카톡로그인", "로그인 성공")
+                        Log.e("카톡로그인", token.accessToken)
+
+                    }
+
+                }
+
+            }
+            else {
+
+//                앱은 안깔려있는 상황
+
+                UserApiClient.instance.loginWithKakaoAccount(mContext) { token, error ->
+
+                    if (error != null) {
+                        Log.e("카톡로그인", "로그인 실패")
+                    }
+                    else if (token != null) {
+
+                        Log.e("카톡로그인", "로그인 성공")
+                        Log.e("카톡로그인", token.accessToken)
+
+                    }
+
+                }
+
+            }
+
+        }
 
         binding.btnFacebookLogin.setOnClickListener {
 
