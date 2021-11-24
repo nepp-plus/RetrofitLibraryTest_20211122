@@ -14,6 +14,7 @@ import com.kakao.sdk.user.UserApi
 import com.kakao.sdk.user.UserApiClient
 import com.neppplus.retrofitlibrarytest_20211122.databinding.ActivityLoginBinding
 import com.neppplus.retrofitlibrarytest_20211122.datas.BasicResponse
+import com.neppplus.retrofitlibrarytest_20211122.utils.ContextUtil
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -122,6 +123,8 @@ class LoginActivity : BaseActivity() {
 
 //                        토큰값 추출 -> 기기에 저장 (SharedPreferences)
 
+                        ContextUtil.setToken(mContext,  basicResponse.data.token)
+
                         val myIntent = Intent(mContext, MainActivity::class.java)
                         startActivity(myIntent)
 
@@ -193,6 +196,8 @@ class LoginActivity : BaseActivity() {
                                     val br = response.body()!!
 
                                     Toast.makeText(mContext, "${br.data.user.nickname}님, 환영합니다!", Toast.LENGTH_SHORT).show()
+
+                                    ContextUtil.setToken(mContext, br.data.token)
 
                                     val myIntent = Intent(mContext, MainActivity::class.java)
                                     startActivity(myIntent)
@@ -282,6 +287,8 @@ class LoginActivity : BaseActivity() {
                             val br = response.body()!!
 
                             Toast.makeText(mContext, "${br.data.user.nickname}님, 환영합니다!", Toast.LENGTH_SHORT).show()
+
+                            ContextUtil.setToken(mContext, br.data.token)
 
                             val myIntent = Intent(mContext, MainActivity::class.java)
                             startActivity(myIntent)
