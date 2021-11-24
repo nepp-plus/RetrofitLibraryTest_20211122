@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.neppplus.retrofitlibrarytest_20211122.R
+import com.neppplus.retrofitlibrarytest_20211122.adapters.CategoryRecyclerAdapter
 import com.neppplus.retrofitlibrarytest_20211122.databinding.FragmentReviewListBinding
 import com.neppplus.retrofitlibrarytest_20211122.datas.BasicResponse
 import com.neppplus.retrofitlibrarytest_20211122.datas.SmallCategoryData
@@ -19,6 +21,7 @@ class ReviewListFragment : BaseFragment() {
     lateinit var binding: FragmentReviewListBinding
 
     val mCategoryList = ArrayList<SmallCategoryData>()
+    lateinit var mCategoryAdapter: CategoryRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +46,11 @@ class ReviewListFragment : BaseFragment() {
     override fun setValues() {
 
         getCategoryListFromServer()
+
+        mCategoryAdapter =  CategoryRecyclerAdapter(mContext, mCategoryList)
+        binding.categoryListRecyclerView.adapter = mCategoryAdapter
+        binding.categoryListRecyclerView.layoutManager = LinearLayoutManager(mContext)
+
     }
 
     fun getCategoryListFromServer() {
@@ -57,6 +65,8 @@ class ReviewListFragment : BaseFragment() {
                     mCategoryList.clear()
 
                     mCategoryList.addAll( br.data.categories )
+
+                    mCategoryAdapter.notifyDataSetChanged()
 
                 }
 
