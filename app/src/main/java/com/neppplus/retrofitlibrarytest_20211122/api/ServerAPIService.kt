@@ -49,5 +49,10 @@ interface ServerAPIService {
         @Header("X-Http-Token")  token: String,
     ) : Call<BasicResponse>
 
+//    상품목록 받아오기 - GET / 아무 파라미터도 없음  (서버의 임시 API)
+
+    @GET("/product")
+    fun getRequestProductList() : Call<BasicResponse>
+
 
 }
