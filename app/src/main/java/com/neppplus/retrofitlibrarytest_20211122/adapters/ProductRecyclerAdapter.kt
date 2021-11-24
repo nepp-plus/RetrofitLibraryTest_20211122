@@ -4,13 +4,29 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.neppplus.retrofitlibrarytest_20211122.R
 import com.neppplus.retrofitlibrarytest_20211122.datas.ProductData
 
 class ProductRecyclerAdapter(val mContext: Context, val mList: List<ProductData> ) : RecyclerView.Adapter<ProductRecyclerAdapter.ProductViewHolder>() {
 
     inner class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        val imgProductImg = view.findViewById<ImageView>(R.id.imgProductImg)
+        val txtStoreName = view.findViewById<TextView>(R.id.txtStoreName)
+        val txtProductName = view.findViewById<TextView>(R.id.txtProductName)
+
+        fun bind( data: ProductData ) {
+
+            txtStoreName.text = data.store.name
+            txtProductName.text = data.name
+
+            Glide.with(mContext).load(data.imageURL).into(imgProductImg)
+
+        }
 
 
     }
@@ -23,7 +39,7 @@ class ProductRecyclerAdapter(val mContext: Context, val mList: List<ProductData>
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-
+        holder.bind( mList[position] )
     }
 
     override fun getItemCount() = mList.size
