@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.neppplus.retrofitlibrarytest_20211122.R
 import com.neppplus.retrofitlibrarytest_20211122.datas.ProductData
 
@@ -25,6 +26,12 @@ class ProductAdapter(
         }
 
         val row = tempRow!!
+
+        val data =  mList[position]
+
+        val txtProductName = row.findViewById<TextView>(R.id.txtProductName)
+
+        txtProductName.text = data.name
 
         return row
 
