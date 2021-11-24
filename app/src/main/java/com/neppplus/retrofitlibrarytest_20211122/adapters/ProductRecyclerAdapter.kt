@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.neppplus.retrofitlibrarytest_20211122.R
@@ -39,6 +40,18 @@ class ProductRecyclerAdapter(val mContext: Context, val mList: List<ProductData>
             rootLayout.setOnClickListener {
 
                 Toast.makeText(mContext, "${data.name} 상품 클릭됨", Toast.LENGTH_SHORT).show()
+            }
+
+            rootLayout.setOnLongClickListener {
+
+                val alert = AlertDialog.Builder(mContext)
+                alert.setTitle("상품 삭제")
+                alert.setMessage("정말 해당 상품을 삭제하겠습니까?")
+                alert.setPositiveButton("확인", null)
+                alert.setNegativeButton("취소", null)
+                alert.show()
+
+                return@setOnLongClickListener true
             }
 
 
