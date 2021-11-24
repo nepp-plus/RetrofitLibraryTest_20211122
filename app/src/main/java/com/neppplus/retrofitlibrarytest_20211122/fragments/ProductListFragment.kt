@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.neppplus.retrofitlibrarytest_20211122.R
+import com.neppplus.retrofitlibrarytest_20211122.adapters.ProductAdapter
 import com.neppplus.retrofitlibrarytest_20211122.databinding.FragmentProductListBinding
 import com.neppplus.retrofitlibrarytest_20211122.datas.BasicResponse
 import com.neppplus.retrofitlibrarytest_20211122.datas.ProductData
@@ -20,6 +21,8 @@ class ProductListFragment : BaseFragment() {
     lateinit var binding: FragmentProductListBinding
 
     val mProductList = ArrayList<ProductData>()
+
+    lateinit var mProductAdapter: ProductAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,6 +46,10 @@ class ProductListFragment : BaseFragment() {
 
     override fun setValues() {
         getProductListFromServer()
+
+        mProductAdapter = ProductAdapter(mContext, R.layout.product_list_item, mProductList)
+        binding.productListView.adapter = mProductAdapter
+
     }
 
     fun getProductListFromServer() {
@@ -56,6 +63,8 @@ class ProductListFragment : BaseFragment() {
 
                     mProductList.clear()
                     mProductList.addAll(br.data.products)
+
+                    mProductAdapter.notifyDataSetChanged()
 
                 }
 
