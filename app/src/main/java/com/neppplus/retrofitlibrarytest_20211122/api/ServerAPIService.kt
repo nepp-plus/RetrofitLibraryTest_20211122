@@ -54,5 +54,10 @@ interface ServerAPIService {
     @GET("/product")
     fun getRequestProductList() : Call<BasicResponse>
 
+//    소분류 전체 목록 받아오기 - GET / 아무 파라미터 없음 (서버의 임시 API)
+
+    @GET("/category/small")
+    fun getRequestSmallCategoryList() : Call<BasicResponse>
+
 
 }
