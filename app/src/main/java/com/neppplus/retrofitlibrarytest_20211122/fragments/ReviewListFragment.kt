@@ -54,6 +54,10 @@ class ReviewListFragment : BaseFragment() {
 
                     var br = response.body()!!
 
+                    mCategoryList.clear()
+
+                    mCategoryList.addAll( br.data.categories )
+
                 }
 
             }
