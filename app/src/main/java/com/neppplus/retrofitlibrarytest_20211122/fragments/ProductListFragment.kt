@@ -1,6 +1,7 @@
 package com.neppplus.retrofitlibrarytest_20211122.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,7 +54,8 @@ class ProductListFragment : BaseFragment() {
 
                     val br = response.body()!!
 
-
+                    mProductList.clear()
+                    mProductList.addAll(br.data.products)
 
                 }
 
