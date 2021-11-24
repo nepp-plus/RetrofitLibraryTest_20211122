@@ -11,6 +11,16 @@ class MainViewPagerAdapter( fm: FragmentManager ) : FragmentPagerAdapter( fm ) {
 
     override fun getCount() = 3
 
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when(position) {
+            
+            0 -> "리뷰목록"
+            1 -> "상품목록"
+            else -> "내 프로필"
+            
+        }
+    }
+
     override fun getItem(position: Int): Fragment {
 
         return when(position) {
