@@ -42,5 +42,12 @@ interface ServerAPIService {
         @Field("nick_name") name: String,
     ) : Call<BasicResponse>
 
+//    내 정보 조회 - GET / 토큰값 (임시방안)
+
+    @GET("/user")
+    fun getRequestMyInfo(
+        @Header("X-Http-Token")  token: String,
+    ) : Call<BasicResponse>
+
 
 }

@@ -26,6 +26,7 @@ class MyProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
+
     }
 
 }
