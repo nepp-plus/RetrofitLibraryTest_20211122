@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "779076522872",
+    "project_id": "retrofitlibrarytest-20211122",
+    "storage_bucket": "retrofitlibrarytest-20211122.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779076522872:android:36f6113f0fffe0195b6e8d",
+        "android_client_info": {
+          "package_name": "com.neppplus.retrofitlibrarytest_20211122"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779076522872-0erfhlh0ve4nhlfjm45f98csdvh6p5o9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK44-Nz-J9BXx81zdZzmpFp0QpJsvhKmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779076522872-0erfhlh0ve4nhlfjm45f98csdvh6p5o9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
