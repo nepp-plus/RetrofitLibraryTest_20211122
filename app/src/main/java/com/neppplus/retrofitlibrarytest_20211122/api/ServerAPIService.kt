@@ -1,6 +1,7 @@
 package com.neppplus.retrofitlibrarytest_20211122.api
 
 import com.neppplus.retrofitlibrarytest_20211122.datas.BasicResponse
+import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -80,5 +81,13 @@ interface ServerAPIService {
 
     @GET("/review")
     fun getRequestReview() : Call<BasicResponse>
+
+//    프로필사진첨부 -> Field대신 Multipart 활용.
+    @Multipart
+    @PUT("/user/image")
+    fun putRequestProfileImg(
+        @Part  img: MultipartBody.Part
+    ) : Call<BasicResponse>
+
 
 }
