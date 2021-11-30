@@ -90,4 +90,8 @@ interface ServerAPIService {
     ) : Call<BasicResponse>
 
 
+//    메인화면 배너 목록
+    @GET("/main/banner")
+    fun getRequestMainBanner() : Call<BasicResponse>
+
 }
