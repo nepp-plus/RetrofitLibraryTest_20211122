@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.neppplus.retrofitlibrarytest_20211122.R
+import com.neppplus.retrofitlibrarytest_20211122.adapters.MainRecyclerAdapter
 import com.neppplus.retrofitlibrarytest_20211122.databinding.FragmentRecyclerviewPracticeBinding
 import com.neppplus.retrofitlibrarytest_20211122.datas.BasicResponse
 import com.neppplus.retrofitlibrarytest_20211122.datas.ReviewData
@@ -18,6 +20,7 @@ class RecyclerViewPracticeFragment : BaseFragment() {
     lateinit var binding: FragmentRecyclerviewPracticeBinding
 
     val mReviewList = ArrayList<ReviewData>()
+    lateinit var mMainRecyclerAdapter : MainRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +44,11 @@ class RecyclerViewPracticeFragment : BaseFragment() {
     override fun setValues() {
 
         getReviewListFromServer()
+
+        mMainRecyclerAdapter = MainRecyclerAdapter(mContext, mReviewList)
+        binding.mainRecyclerView.adapter = mMainRecyclerAdapter
+        binding.mainRecyclerView.layoutManager = LinearLayoutManager(mContext)
+
     }
 
     fun getReviewListFromServer() {
@@ -54,6 +62,9 @@ class RecyclerViewPracticeFragment : BaseFragment() {
 
                     mReviewList.clear()
                     mReviewList.addAll( br.data.reviews )
+
+
+                    mMainRecyclerAdapter.notifyDataSetChanged()
 
                 }
 
