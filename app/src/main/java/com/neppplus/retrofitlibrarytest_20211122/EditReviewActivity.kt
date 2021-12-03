@@ -19,6 +19,8 @@ import com.neppplus.retrofitlibrarytest_20211122.databinding.ActivityEditReviewB
 import com.neppplus.retrofitlibrarytest_20211122.datas.BasicResponse
 import com.neppplus.retrofitlibrarytest_20211122.datas.ProductData
 import com.neppplus.retrofitlibrarytest_20211122.utils.GlobalData
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -182,9 +184,25 @@ class EditReviewActivity : BaseActivity() {
             }
 
 
+//            리뷰 작성 : 2가지 데이터 (Multipart) 보내자.
+
+//            1. 일반 파라미터들 (id / 제목 / 내용 / 점수 등등)
 
 
-            apiService.postRequestReview(mProductData.id, inputTitle, inputContent, rating).enqueue( object : Callback<BasicResponse> {
+
+//            2. 이미지 등 파일 파라미터
+
+            val productIdBody = RequestBody.create( MediaType.parse("text/plain"), mProductData.id.toString() )
+            val titleBody = RequestBody.create( MediaType.parse("text/plain"), inputTitle )
+            val contentBody = RequestBody.create( MediaType.parse("text/plain"), inputContent )
+            val scoreBody = RequestBody.create( MediaType.parse("text/plain"), rating.toString() )
+            val tagListBody = RequestBody.create( MediaType.parse("text/plain"), tagStr )
+
+
+            apiService.postRequestReview(
+//                1. 일반 : HashMap
+//                2. 이미지 등 파일 : Multipart.Part
+            ).enqueue( object : Callback<BasicResponse> {
                 override fun onResponse(
                     call: Call<BasicResponse>,
                     response: Response<BasicResponse>
